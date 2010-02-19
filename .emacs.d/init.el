@@ -24,16 +24,12 @@ point."
   (local-set-key [tab] 'indent-or-expand))
 
 (add-hook 'ruby-mode-hook       'my-tab-fix)
- 
+
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-twilight)
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(term-bind-key-alist (quote (("C-y" . term-paste))))
  '(term-default-bg-color "#000000")
  '(term-default-fg-color "#FFFFFF"))
@@ -56,6 +52,7 @@ point."
 
 ; Remove startup screen
 (setq inhibit-startup-screen t)
+(tool-bar-mode -1)
 
 ; Highlight current line
 (global-hl-line-mode 1)
@@ -66,3 +63,19 @@ point."
   (find-file (concat "~/.emacs.d/" file_name)))
 
 (require 'magit)
+
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(defun Ido-find-file-in-tag-files ()
+  (interactive)
+  (save-excursion
+    (let ((enable-recursive-minibuffers t)) (visit-tags-table-buffer))
+    (find-file (expand-file-name
+                (ido-completing-read "Project file: "
+                                     (tags-table-files) nil t)))))
+
+(global-set-key (kbd "C-c t") 'Ido-find-file-in-tag-files)
+(global-set-key (kbd "C-c m") 'magit-status)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
