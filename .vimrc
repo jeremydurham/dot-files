@@ -30,3 +30,27 @@ let g:ctrlp_cmd = 'CtrlP'
 " NERDTree
 autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Whitespace cleanup
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Cleanup whitespace with F5
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+" Invisibles
+nmap <leader>l :set list!<CR>
+ 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
