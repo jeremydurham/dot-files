@@ -1,56 +1,71 @@
-" Basic Configuration
+" Defaults
 set nocompatible
+let mapleader = "\<Space>"
+set backspace=2
+set nobackup
+set nowritebackup
+set noswapfile
+set history=50
 set ruler
-set autoindent
-set smartindent
-set foldmethod=marker
-set wildmenu
-set visualbell
-set formatoptions=cqrt
-syntax on
-filetype plugin indent on
-set hlsearch
+set showcmd
 set incsearch
-set nu
+set laststatus=2
+set autowrite
 set ignorecase
 set smartcase
+set autoindent
+set smartindent
+set visualbell
+set tabstop=2
 set shiftwidth=2
-set softtabstop=2
+set shiftround
 set expandtab
-set nobackup
+set textwidth=100
+set colorcolumn=+1
+set number
+set numberwidth=5
 
-" Pathogen
-execute pathogen#infect()
+" Shortcuts
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
 
-" ctrl-p
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" Syntax and file identification
+filetype indent plugin on
+syntax on
+
+" Plugins
+call plug#begin('~/.vim/bundle/')
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
+
+" Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " NERDTree
-autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Whitespace cleanup
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
+" CtrlP
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-" Cleanup whitespace with F5
-nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
 
-" Invisibles
-nmap <leader>l :set list!<CR>
- 
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
+endif
