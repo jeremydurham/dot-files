@@ -31,6 +31,7 @@ syntax on
 " Shortcuts
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
+map <leader>s :source ~/.vimrc<CR>
 
 " Plugins
 call plug#begin('~/.vim/bundle/')
@@ -41,6 +42,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 " Split navigation
@@ -48,6 +50,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Ack
+let g:ackprg = 'ag --vimgrep'
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
