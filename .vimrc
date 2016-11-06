@@ -1,6 +1,7 @@
-" Defaults
-set nocompatible
+" Remap leader
 let mapleader = "\<Space>"
+
+set nocompatible
 set backspace=2
 set nobackup
 set nowritebackup
@@ -24,14 +25,12 @@ set textwidth=100
 set colorcolumn=+1
 set number
 set numberwidth=5
+filetype indent plugin on
+syntax on
 
 " Shortcuts
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
-
-" Syntax and file identification
-filetype indent plugin on
-syntax on
 
 " Plugins
 call plug#begin('~/.vim/bundle/')
