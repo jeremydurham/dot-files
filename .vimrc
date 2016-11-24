@@ -30,6 +30,8 @@ filetype indent plugin on
 syntax on
 
 " Shortcuts
+nmap <F8> :TagbarToggle<CR>
+
 nnoremap <Leader>w :w<CR>
 map <leader>s :source ~/.vimrc<CR>
 
@@ -46,6 +48,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'fatih/vim-go'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 " Split navigation
@@ -56,6 +60,15 @@ nnoremap <C-H> <C-W><C-H>
 
 " Ack
 let g:ackprg = 'ag --vimgrep'
+
+" Vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
