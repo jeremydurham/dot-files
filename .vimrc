@@ -25,18 +25,17 @@ set textwidth=100
 set colorcolumn=+1
 set number
 set numberwidth=5
+set hls
 filetype indent plugin on
 syntax on
 
 " Shortcuts
-nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 map <leader>s :source ~/.vimrc<CR>
 
 " Plugins
 call plug#begin('~/.vim/bundle/')
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
@@ -45,6 +44,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Split navigation
@@ -59,19 +60,9 @@ let g:ackprg = 'ag --vimgrep'
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" CtrlP
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" Fuzzy-find with fzf
+map <C-p> :Files<cr>
+nmap <C-p> :Files<cr>
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
+" " View commits in fzf
+nmap <Leader>c :Commits<cr>
