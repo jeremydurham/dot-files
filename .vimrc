@@ -31,6 +31,7 @@ syntax on
 
 " Shortcuts
 nmap <F8> :TagbarToggle<CR>
+nnoremap \ :Ag<SPACE>
 
 nnoremap <Leader>w :w<CR>
 map <leader>s :source ~/.vimrc<CR>
