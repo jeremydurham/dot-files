@@ -99,5 +99,9 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-p> :Files<cr>
 nmap <C-p> :Files<cr>
 
-" " View commits in fzf
+" View commits in fzf
 nmap <Leader>c :Commits<cr>
+
+" trim Whitespace on Save
+autocmd BufWritePre * :%s/\s\+$//e
+
