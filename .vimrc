@@ -57,6 +57,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " Color scheme
@@ -70,6 +71,17 @@ nnoremap <C-H> <C-W><C-H>
 
 " Ack
 let g:ackprg = 'ag --vimgrep'
+
+" Syntastic
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_aggregate_errors = 1
+
+" Go checker
+let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+
+" Ruby checker
+let g:syntastic_ruby_checkers = ['mri']
 
 " Vim-go
 let g:go_highlight_functions = 1
