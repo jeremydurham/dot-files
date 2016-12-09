@@ -9,7 +9,6 @@ set noswapfile
 set history=50
 set ruler
 set showcmd
-set incsearch
 set laststatus=2
 set autowrite
 set ignorecase
@@ -26,15 +25,21 @@ set colorcolumn=+1
 set number
 set numberwidth=5
 set hls
+set incsearch
+
 filetype indent plugin on
 syntax on
 
 " Shortcuts
 nmap <F8> :TagbarToggle<CR>
 nnoremap \ :Ag<SPACE>
+noremap <leader>s :source ~/.vimrc<CR>
 
-nnoremap <Leader>w :w<CR>
-map <leader>s :source ~/.vimrc<CR>
+" Copy and Paste
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 " Plugins
 call plug#begin('~/.vim/bundle/')
@@ -51,7 +56,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
+Plug 'flazz/vim-colorschemes'
 call plug#end()
+
+" Color scheme
+colorscheme twilight256
 
 " Split navigation
 nnoremap <C-J> <C-W><C-J>
