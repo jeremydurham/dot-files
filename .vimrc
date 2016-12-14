@@ -58,6 +58,10 @@ Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-syntastic/syntastic'
+Plug 'pangloss/vim-javascript'
+Plug 'ervandew/supertab'
+Plug 'mxw/vim-jsx'
+Plug 'kchmck/vim-coffee-script'
 call plug#end()
 
 " Color scheme
@@ -82,6 +86,11 @@ let g:syntastic_go_checkers = ['go', 'golint', 'govet']
 
 " Ruby checker
 let g:syntastic_ruby_checkers = ['mri']
+
+" Javascript checker
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Vim-go
 let g:go_highlight_functions = 1
