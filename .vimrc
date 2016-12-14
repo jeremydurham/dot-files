@@ -58,10 +58,9 @@ Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-syntastic/syntastic'
-Plug 'pangloss/vim-javascript'
 Plug 'ervandew/supertab'
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'kchmck/vim-coffee-script'
 call plug#end()
 
 " Color scheme
@@ -72,6 +71,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Tabs
+set showtabline=2
 
 " Ack
 let g:ackprg = 'ag --vimgrep'
@@ -89,7 +91,6 @@ let g:syntastic_ruby_checkers = ['mri']
 
 " Javascript checker
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Vim-go
