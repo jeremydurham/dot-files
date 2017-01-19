@@ -115,3 +115,7 @@ nmap <Leader>c :Commits<cr>
 " trim Whitespace on Save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" reload file if it was changed outside
+set autoread
+autocmd FocusGained * checktime
+
