@@ -49,7 +49,6 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -59,8 +58,6 @@ Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 call plug#end()
 
 " Color scheme
