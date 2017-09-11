@@ -19,7 +19,12 @@ mkdir -p ~/.config/nvim
 Now, we'll symlink our vimrc into a place where neovim can load it:
 
 ```
-ln -s ~/dot-files/.vimrc ./.nvimrc
+ln -s ~/dot-files/.vimrc ~/.config/nvim/init.vim
 ```
 
-My current preferred plug-in manager is [vim-plug](https://github.com/junegunn/vim-plug), so you'll have to follow the vim-plug installation instructions.
+My current preferred plug-in manager is [vim-plug](https://github.com/junegunn/vim-plug), so we'll need to install that with a few caveats:
+
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
