@@ -32,6 +32,7 @@ filetype indent plugin on
 syntax on
 
 " Shortcuts
+nmap <F7> mzgg=G`z
 nmap <F8> :TagbarToggle<CR>
 nnoremap \ :Ag<SPACE>
 noremap <leader>s :source ~/dot-files/.vimrc<CR>
@@ -76,10 +77,10 @@ set showtabline=2
 let g:ackprg = 'ag --vimgrep'
 
 let g:ale_linters = {
-\   'json': ['jsonlint'],
-\   'ruby': ['ruby', 'reek', 'rubocop'],
-\   'go': ['gofmt', 'go vet', 'golint', 'go build'],
-\}
+      \   'json': ['jsonlint'],
+      \   'ruby': ['ruby', 'reek', 'rubocop'],
+      \   'go': ['gofmt', 'go vet', 'golint', 'go build'],
+      \}
 
 " Vim-go
 let g:go_highlight_functions = 1
